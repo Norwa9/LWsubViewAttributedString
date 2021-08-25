@@ -54,7 +54,12 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(handle(_:)))
         self.addGestureRecognizer(tapGes)
         
-        //4.
+        //4.图片边框
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 5
+        self.layer.borderColor = UIColor.gray.cgColor
+        
+        //
         startFrame = self.frame
     }
     
