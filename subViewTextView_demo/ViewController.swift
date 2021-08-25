@@ -100,6 +100,7 @@ extension ViewController : scableImageViewDelegate{
             print("newView.model.location : \(newView.model.location)")
             mutable.replaceAttchment(newAttchment, at: newView.model.location, with: centerParagraphStyle)
             textView.attributedText = mutable
+            textView.selectedRange = NSRange(location: newView.model.location, length: 0)
         }
         
         
