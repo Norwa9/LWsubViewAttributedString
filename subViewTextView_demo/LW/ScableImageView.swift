@@ -24,7 +24,7 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
         initUI()
         
         imageView = UIImageView(image: UIImage(named: "bg"))
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         self.addSubview(imageView)
         imageView.frame = self.bounds

@@ -17,9 +17,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         textView = SubviewAttachingTextView(frame: view.frame)
+        textView.delegate = self
         self.view.addSubview(textView)
         
         initUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let aString = loadAttributedString(id_string: "1"){
+            textView.attributedText = aString
+        }
     }
     
     func initUI(){
@@ -53,6 +60,7 @@ class ViewController: UIViewController {
         view1.backgroundColor = .black
         view1.delegate = self
         view1.index = text.length
+        view1.addGestureRecognizer(gestureRecognizer)
 
         // Add attachments to the string and set it on the text view
         // This example avoids evaluating the attachments or attributed strings with attachments in the Playground because Xcode crashes trying to decode attachment objects
@@ -63,10 +71,8 @@ class ViewController: UIViewController {
 //            .insertingAttachment(SubviewTextAttachment(view: UIDatePicker()), at: 500, with: centerParagraphStyle)
     }
     @objc func handle(_ sender: UIGestureRecognizer!) {
-        if let imageView = sender.view as? UIImageView {
-            print("tapped")
-            imageView.alpha = CGFloat(arc4random_uniform(1000)) / 1000.0
-        }
+        print("tapped")
+        saveAttributedString(id_string: "1", aString: textView.attributedText)
     }
 
 }
@@ -90,5 +96,16 @@ extension ViewController : scableImageViewDelegate{
         
 //        let path  = UIBezierPath(rect: convertedFrame)
 //        textView.exclusionPaths = [path]
+    }
+}
+
+extension ViewController : UITextViewDelegate{
+    override func viewWillDisappear(_ animated: Bool) {
+        print("viewWillDisappear")
+        saveAttributedString(id_string: "1", aString: textView.attributedText)
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("textViewDidEndEditing")
+        saveAttributedString(id_string: "1", aString: textView.attributedText)
     }
 }
