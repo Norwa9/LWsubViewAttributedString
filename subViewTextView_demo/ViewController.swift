@@ -11,8 +11,6 @@ import SubviewAttachingTextView
 class ViewController: UIViewController {
     var textView:SubviewAttachingTextView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,13 +18,16 @@ class ViewController: UIViewController {
         textView.delegate = self
         self.view.addSubview(textView)
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(save))
+        
         initUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        if let aString = loadAttributedString(id_string: "1"){
-//            textView.attributedText = aString
-//        }
+        let models = loadAttributes()
+        if let aString = loadAttributedString(id_string: "2"){
+            textView.attributedText = recoverAttributedString(models: models, aString: aString)
+        }
     }
     
     func initUI(){
@@ -68,6 +69,38 @@ class ViewController: UIViewController {
         textView.attributedText = text
     }
     
+    @objc func save(){
+        let aString = textView.attributedText!
+        let range = NSRange(location: 0, length: aString.length)
+        var models:[ScableImageModel] = []
+        aString.enumerateAttribute(.attachment, in: range, options: []) { (object, range, stop) in
+            if let attchment = object as? SubviewTextAttachment{
+                if let view = attchment.view as? scableImageView{
+                    let currentLocation = range.location
+                    let viewModel = view.viewModel
+                    viewModel.location = currentLocation
+                    models.append(viewModel.getModel())
+                }
+            }
+        }
+        
+        saveAttributes(models: models)
+        saveAttributedString(id_string: "2", aString: aString)
+        print("save aString length : \(aString.length)")
+    }
+    
+    //MARK:-recover
+    func recoverAttributedString(models:[ScableImageModel],aString:NSAttributedString)->NSAttributedString{
+        var result = aString
+        for model in models{
+            let viewModel = ScableImageViewModel(model: model)
+            let view = scableImageView(viewModel: viewModel)
+            view.delegate = self
+            let subViewAttributedString = SubviewTextAttachment(view: view, size: view.bounds.size)
+            result = result.insertingAttachment(subViewAttributedString, at: viewModel.location,with: viewModel.paraStyle)
+        }
+        return result
+    }
 
 }
 
@@ -92,14 +125,6 @@ extension ViewController : scableImageViewDelegate{
 }
 
 extension ViewController : UITextViewDelegate{
-    override func viewWillDisappear(_ animated: Bool) {
-        print("viewWillDisappear")
-        saveAttributedString(id_string: "1", aString: textView.attributedText)
-    }
-    func textViewDidEndEditing(_ textView: UITextView) {
-        print("textViewDidEndEditing")
-        saveAttributedString(id_string: "1", aString: textView.attributedText)
-    }
     
 }
 

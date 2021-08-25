@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SubviewAttachingTextView
 
-class ScableImageModel: NSObject {
+class ScableImageModel: NSObject,Codable {
     var location:Int
     var imageData:Data
     var bounds:String
@@ -18,7 +18,8 @@ class ScableImageModel: NSObject {
     
     init(location:Int,imageData:Data,bounds:String,paraStyle:Int,contentMode:Int) {
         self.location = location
-        self.imageData = imageData
+//        self.imageData = imageData
+        self.imageData = "123".data(using: .utf16)!
         self.bounds = bounds
         self.paraStyle = paraStyle
         self.contentMode = contentMode

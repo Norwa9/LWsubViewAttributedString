@@ -6,6 +6,16 @@
 //
 
 import Foundation
+//MARK:-save
+func saveAttributes(models:[ScableImageModel]){
+    let defautls = UserDefaults.standard
+    let jsonEncoder = JSONEncoder()
+    if let modelsData = try? jsonEncoder.encode(models) {
+        defautls.set(modelsData, forKey: "ScableImageModel")
+    } else {
+        print("Failed to save roamData")
+    }
+}
 
 func saveAttributedString(id_string:String,aString:NSAttributedString?) {
         do {
@@ -25,8 +35,23 @@ func saveAttributedString(id_string:String,aString:NSAttributedString?) {
             //Error handling
         }
         
-    }
+}
 
+//MARK:-load
+func loadAttributes() -> [ScableImageModel]{
+    let defaults = UserDefaults.standard
+    
+    if let savedData = defaults.object(forKey: "ScableImageModel") as? Data {
+        let jsonDecoder = JSONDecoder()
+        do {
+           let models = try jsonDecoder.decode([ScableImageModel].self, from: savedData)
+            return models
+        } catch {
+
+        }
+    }
+    return []
+}
 func loadAttributedString(id_string:String) -> NSAttributedString?{
    if let dir = FileManager.default.urls (for: .documentDirectory, in: .userDomainMask) .first {
        let path_file_name = dir.appendingPathComponent (id_string)
@@ -42,3 +67,6 @@ func loadAttributedString(id_string:String) -> NSAttributedString?{
    }
    return nil
 }
+
+
+
