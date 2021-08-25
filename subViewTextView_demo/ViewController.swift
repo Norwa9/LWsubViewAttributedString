@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         
         let viewModel1 = ScableImageViewModel(location: text.length, image: #imageLiteral(resourceName: "bg"), bounds: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
         let view1 = scableImageView(viewModel: viewModel1)
-        view1.backgroundColor = .black
+        view1.backgroundColor = .clear
         view1.delegate = self
         text = text
             .insertingAttachment(SubviewTextAttachment(view: view1, size: view1.size), at: viewModel1.location, with: viewModel1.paraStyle)
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         
         let viewModel2 = ScableImageViewModel(location: text.length, image: #imageLiteral(resourceName: "bg"), bounds: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
         let view2 = scableImageView(viewModel: viewModel2)
-        view2.backgroundColor = .black
+        view2.backgroundColor = .clear
         view2.delegate = self
         text = text
             .insertingAttachment(SubviewTextAttachment(view: view2, size: view2.size), at: viewModel2.location, with: viewModel2.paraStyle)
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         let model33 = viewModel33.getModel()
         let viewModel3 = ScableImageViewModel(model: model33)
         let view3 = scableImageView(viewModel: viewModel3)
-        view3.backgroundColor = .black
+        view3.backgroundColor = .clear
         view3.delegate = self
         text = text
             .insertingAttachment(SubviewTextAttachment(view: view3, size: view3.size), at: viewModel3.location, with: viewModel3.paraStyle)
@@ -79,7 +79,7 @@ extension ViewController : scableImageViewDelegate{
         newViewModel.getNewestLocation(attributedString: textView.attributedText){
             let newView = scableImageView(viewModel: newViewModel)
             newView.delegate = self
-            newView.backgroundColor = .gray
+            newView.backgroundColor = .clear
             let newAttchment = SubviewTextAttachment(view: newView, size: newView.size)
             
             let mutable = NSMutableAttributedString(attributedString: textView.attributedText!)

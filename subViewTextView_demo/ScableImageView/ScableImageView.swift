@@ -18,6 +18,7 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
     private var dotView:UIView!
     private var imageView:UIImageView!
     private var dot: UIView?
+    var startFrame:CGRect!
     weak var delegate:scableImageViewDelegate?
     
     var viewModel:ScableImageViewModel
@@ -51,22 +52,39 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
         //3.tap gesture
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(handle(_:)))
         self.addGestureRecognizer(tapGes)
+        
+        //4.
+        startFrame = self.frame
     }
     
     func addDotView(){
         weak var wlabel = self
         dot = newDotView()
-        dot?.center = CGPoint(x: self.width, y: self.height)
+        if viewModel.paraStyle == rightParagraphStyle{
+            dot?.center = CGPoint(x: 0, y: self.height)
+        }else{
+            dot?.center = CGPoint(x: self.width, y: self.height)
+        }
         dot?.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
         if let dot = dot {
             self.addSubview(dot)
         }
         let gesture = BSGestureRecognizer()
         gesture.targetView = self
-        gesture.action = { gesture, state in
+        gesture.action = { [self] gesture, state in
             if state == BSGestureRecognizerState.moved {
-                let width = gesture!.currentPoint.x
-                let height = gesture!.currentPoint.y
+                let x = gesture!.currentPoint.x
+                let y = gesture!.currentPoint.y
+                var newWidth:CGFloat
+                if viewModel.paraStyle == rightParagraphStyle{
+                    newWidth = startFrame.width - x
+                    dot?.center.x = x
+                }else{
+                    newWidth = x
+                }
+                let width  = newWidth
+                let height = y
+                print(x,y,width,height)
                 wlabel?.width = width < 30 ? 30 : width
                 wlabel?.height = height < 30 ? 30 : height
             }else if state == .ended{
