@@ -38,8 +38,9 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
     
     func initUI(){
         //1.imageView
-        imageView = UIImageView(image: UIImage(named: "bg2"))
-        imageView.contentMode = .scaleAspectFill
+        imageView = UIImageView()
+        imageView.image = viewModel.image
+        imageView.contentMode = viewModel.contentMode
         imageView.clipsToBounds = true
         self.addSubview(imageView)
         imageView.frame = self.bounds
@@ -133,6 +134,14 @@ extension scableImageView{
                         }else{
                             self.removeDotView()
                         }
+                    }),
+                    PopMenuDefaultAction(title: "布满模式",didSelect: { action in
+                        view.viewModel.contentMode = .scaleAspectFill
+                        self.delegate?.reloadScableImage(endView: view)
+                    }),
+                    PopMenuDefaultAction(title: "裁剪模式",didSelect: { action in
+                        view.viewModel.contentMode = .scaleAspectFit
+                        self.delegate?.reloadScableImage(endView: view)
                     }),
                     PopMenuDefaultAction(title: "居中",didSelect: { action in
                         view.viewModel.paraStyle = centerParagraphStyle

@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         
         var text = NSAttributedString(string: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n居中、局左、居右")
         
-        let viewModel1 = ScableImageViewModel(location: text.length, image: #imageLiteral(resourceName: "bg"), bounds: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
+        let viewModel1 = ScableImageViewModel(location: text.length, image: #imageLiteral(resourceName: "bg2"), bounds: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
         let view1 = scableImageView(viewModel: viewModel1)
         view1.backgroundColor = .clear
         view1.delegate = self
@@ -45,14 +45,14 @@ class ViewController: UIViewController {
         mu.insert(NSAttributedString(string: "\n还可以手动调节图片的大小\n\n"), at: mu.length)
         text = mu
         
-        let viewModel2 = ScableImageViewModel(location: text.length, image: #imageLiteral(resourceName: "bg"), bounds: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
+        let viewModel2 = ScableImageViewModel(location: text.length, image: #imageLiteral(resourceName: "bg2"), bounds: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
         let view2 = scableImageView(viewModel: viewModel2)
         view2.backgroundColor = .clear
         view2.delegate = self
         text = text
             .insertingAttachment(SubviewTextAttachment(view: view2, size: view2.size), at: viewModel2.location, with: viewModel2.paraStyle)
         
-        let model3 = ScableImageModel(location: text.length, imageData: UIImage(named: "bg")!.pngData()!, bounds: "0,0,200,200", paraStyle: .center)
+        let model3 = ScableImageModel(location: text.length, imageData: UIImage(named: "bg")!.pngData()!, bounds: "0,0,200,200", paraStyle: 0,contentMode: 2)
         let viewModel33 = ScableImageViewModel(model: model3)
         let model33 = viewModel33.getModel()
         let viewModel3 = ScableImageViewModel(model: model33)

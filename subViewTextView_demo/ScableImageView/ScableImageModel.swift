@@ -13,13 +13,15 @@ class ScableImageModel: NSObject {
     var location:Int
     var imageData:Data
     var bounds:String
-    var paraStyle:LWTextAligmentStyle
+    var paraStyle:Int
+    var contentMode:Int
     
-    init(location:Int,imageData:Data,bounds:String,paraStyle:LWTextAligmentStyle) {
+    init(location:Int,imageData:Data,bounds:String,paraStyle:Int,contentMode:Int) {
         self.location = location
         self.imageData = imageData
         self.bounds = bounds
         self.paraStyle = paraStyle
+        self.contentMode = contentMode
         super.init()
     }
     

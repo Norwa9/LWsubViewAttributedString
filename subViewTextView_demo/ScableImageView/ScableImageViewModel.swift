@@ -14,6 +14,7 @@ class ScableImageViewModel: NSObject {
     var image:UIImage
     var bounds:CGRect
     var paraStyle:NSMutableParagraphStyle
+    var contentMode:UIView.ContentMode = .scaleAspectFill
     var isEditing:Bool = false
     
     init(location:Int,image:UIImage,bounds:CGRect,paraStyle:NSMutableParagraphStyle = centerParagraphStyle) {
@@ -30,14 +31,17 @@ class ScableImageViewModel: NSObject {
         self.bounds = CGRect.init(string: model.bounds) ?? .zero
         var paraStyle:NSMutableParagraphStyle
         switch model.paraStyle{
-        case .center:
+        case 0:
             paraStyle = centerParagraphStyle
-        case .left:
+        case 1:
             paraStyle = leftParagraphStyle
-        case .right:
+        case 2:
             paraStyle = rightParagraphStyle
+        default:
+            paraStyle = centerParagraphStyle
         }
         self.paraStyle = paraStyle
+        self.contentMode = UIImageView.ContentMode.init(rawValue: model.contentMode)!
         super.init()
     }
     
@@ -73,7 +77,7 @@ class ScableImageViewModel: NSObject {
         }
         
         let boundsSring = "\(bounds.origin.x),\(bounds.origin.y),\(bounds.size.width),\(bounds.size.height)"
-        let model = ScableImageModel(location: location, imageData: image.pngData()!, bounds: boundsSring, paraStyle: paraStyle)
+        let model = ScableImageModel(location: location, imageData: image.pngData()!, bounds: boundsSring, paraStyle: paraStyle.rawValue,contentMode: contentMode.rawValue)
         return model
     }
     
