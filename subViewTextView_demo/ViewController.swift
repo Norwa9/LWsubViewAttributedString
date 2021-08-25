@@ -87,16 +87,13 @@ extension ViewController : scableImageViewDelegate{
         
         let newView = scableImageView(model: newModel)
         newView.delegate = self
-        newView.backgroundColor = .green
+        newView.backgroundColor = .gray
         let newAttchment = SubviewTextAttachment(view: newView, size: newView.size)
         
         let mutable = NSMutableAttributedString(attributedString: textView.attributedText!)
         mutable.replaceAttchment(newAttchment, at: newView.model.location, with: centerParagraphStyle)
         textView.attributedText = mutable
-        
-        
-//        let path  = UIBezierPath(rect: convertedFrame)
-//        textView.exclusionPaths = [path]
+
     }
 }
 
