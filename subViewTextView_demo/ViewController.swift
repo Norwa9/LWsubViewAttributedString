@@ -53,7 +53,9 @@ class ViewController: UIViewController {
             .insertingAttachment(SubviewTextAttachment(view: view2, size: view2.size), at: viewModel2.location, with: viewModel2.paraStyle)
         
         let model3 = ScableImageModel(location: text.length, imageData: UIImage(named: "bg")!.pngData()!, bounds: "0,0,200,200", paraStyle: .center)
-        let viewModel3 = ScableImageViewModel(model: model3)
+        let viewModel33 = ScableImageViewModel(model: model3)
+        let model33 = viewModel33.getModel()
+        let viewModel3 = ScableImageViewModel(model: model33)
         let view3 = scableImageView(viewModel: viewModel3)
         view3.backgroundColor = .black
         view3.delegate = self
