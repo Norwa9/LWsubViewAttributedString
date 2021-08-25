@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol scableImageViewDelegate : NSObject {
-    func reloadScableImage(view:scableImageView)
+    func reloadScableImage(endView:scableImageView)
 }
 
 class scableImageView:UIView, UIGestureRecognizerDelegate{
@@ -58,7 +58,7 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
                 wlabel?.width = width < 30 ? 30 : width
                 wlabel?.height = height < 30 ? 30 : height
             }else if state == .ended{
-                self.delegate?.reloadScableImage(view: self)
+                self.delegate?.reloadScableImage(endView: self)
             }
             
         }
