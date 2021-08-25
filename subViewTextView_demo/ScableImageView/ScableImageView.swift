@@ -64,6 +64,10 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
         }
         gesture.delegate = self
         dot?.addGestureRecognizer(gesture)
+        
+        //3.tap gesture
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(handle(_:)))
+        self.addGestureRecognizer(tapGes)
     }
     
     private func newDotView() -> UIView? {
@@ -82,6 +86,18 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
     }
     
     
+}
+
+extension scableImageView{
+    @objc func handle(_ sender: UIGestureRecognizer!) {
+        print("tapped")
+        if let view = sender.view as? scableImageView{
+            if view == self{
+                view.model.paraStyle = leftParagraphStyle
+                delegate?.reloadScableImage(endView: view)
+            }
+        }
+    }
 }
 
 extension scableImageView{

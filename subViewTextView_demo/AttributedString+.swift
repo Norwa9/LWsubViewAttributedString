@@ -61,7 +61,7 @@ public extension NSMutableAttributedString {
         }
     }
     
-    func replaceAttchment(_ attachment: NSTextAttachment, at index: Int, with paragraphStyle: NSParagraphStyle? = nil) {
+    func replaceAttchment(_ attachment: NSTextAttachment, attchmentAt index: Int, with paragraphStyle: NSParagraphStyle? = nil) {
         let plainAttachmentString = NSAttributedString(attachment: attachment)
 
         if let paragraphStyle = paragraphStyle {

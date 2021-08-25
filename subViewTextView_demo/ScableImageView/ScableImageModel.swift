@@ -13,6 +13,7 @@ class ScableImageModel: NSObject {
     var location:Int
     var image:UIImage
     var bounds:CGRect
+    var paraStyle:NSMutableParagraphStyle = centerParagraphStyle
     
     init(location:Int,image:UIImage,bounds:CGRect) {
         self.location = location
