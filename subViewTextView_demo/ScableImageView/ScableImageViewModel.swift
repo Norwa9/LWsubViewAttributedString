@@ -14,6 +14,7 @@ class ScableImageViewModel: NSObject {
     var image:UIImage
     var bounds:CGRect
     var paraStyle:NSMutableParagraphStyle
+    var isEditing:Bool = false
     
     init(location:Int,image:UIImage,bounds:CGRect,paraStyle:NSMutableParagraphStyle = centerParagraphStyle) {
         self.location = location

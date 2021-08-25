@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     func initUI(){
         //==============
         
-        var text = NSAttributedString(string: "测试\n\n\n\n\n\n\n\n")
+        var text = NSAttributedString(string: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n居中、局左、居右")
         
         let viewModel1 = ScableImageViewModel(location: text.length, image: #imageLiteral(resourceName: "bg"), bounds: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
         let view1 = scableImageView(viewModel: viewModel1)
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
             .insertingAttachment(SubviewTextAttachment(view: view1, size: view1.size), at: viewModel1.location, with: viewModel1.paraStyle)
         
         let mu = NSMutableAttributedString(attributedString: text)
-        mu.insert(NSAttributedString(string: "\n\n\n"), at: mu.length)
+        mu.insert(NSAttributedString(string: "\n还可以手动调节图片的大小\n\n"), at: mu.length)
         text = mu
         
         let viewModel2 = ScableImageViewModel(location: text.length, image: #imageLiteral(resourceName: "bg"), bounds: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))

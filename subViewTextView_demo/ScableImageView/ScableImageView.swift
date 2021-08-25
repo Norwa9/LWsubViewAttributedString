@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PopMenu
 
 protocol scableImageViewDelegate : NSObject {
     func reloadScableImage(endView:scableImageView)
@@ -16,6 +17,7 @@ protocol scableImageViewDelegate : NSObject {
 class scableImageView:UIView, UIGestureRecognizerDelegate{
     private var dotView:UIView!
     private var imageView:UIImageView!
+    private var dot: UIView?
     weak var delegate:scableImageViewDelegate?
     
     var viewModel:ScableImageViewModel
@@ -41,9 +43,19 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
         self.addSubview(imageView)
         imageView.frame = self.bounds
         
-        //2.red dot
+        //2.dotView
+        if viewModel.isEditing{
+             addDotView()
+        }
+        
+        //3.tap gesture
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(handle(_:)))
+        self.addGestureRecognizer(tapGes)
+    }
+    
+    func addDotView(){
         weak var wlabel = self
-        let dot: UIView? = newDotView()
+        dot = newDotView()
         dot?.center = CGPoint(x: self.width, y: self.height)
         dot?.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
         if let dot = dot {
@@ -60,14 +72,13 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
             }else if state == .ended{
                 self.delegate?.reloadScableImage(endView: self)
             }
-            
         }
         gesture.delegate = self
         dot?.addGestureRecognizer(gesture)
-        
-        //3.tap gesture
-        let tapGes = UITapGestureRecognizer(target: self, action: #selector(handle(_:)))
-        self.addGestureRecognizer(tapGes)
+    }
+    
+    func removeDotView(){
+        dot?.removeFromSuperview()
     }
     
     private func newDotView() -> UIView? {
@@ -93,11 +104,39 @@ extension scableImageView{
         print("tapped")
         if let view = sender.view as? scableImageView{
             if view == self{
-                view.viewModel.paraStyle = leftParagraphStyle
-                delegate?.reloadScableImage(endView: view)
+                
+                let popManager = PopMenuManager.default
+                popManager.actions = [
+                    PopMenuDefaultAction(title: "编辑",didSelect: { action in
+                        view.viewModel.isEditing.toggle()
+                        let isEditing = view.viewModel.isEditing
+                        if isEditing{
+                            self.addDotView()
+                        }else{
+                            self.removeDotView()
+                        }
+                    }),
+                    PopMenuDefaultAction(title: "居中",didSelect: { action in
+                        view.viewModel.paraStyle = centerParagraphStyle
+                        self.delegate?.reloadScableImage(endView: view)
+                    }),
+                    PopMenuDefaultAction(title: "居左",didSelect: { action in
+                        view.viewModel.paraStyle = leftParagraphStyle
+                        self.delegate?.reloadScableImage(endView: view)
+                    }),
+                    PopMenuDefaultAction(title: "居右",didSelect: { action in
+                        view.viewModel.paraStyle = rightParagraphStyle
+                        self.delegate?.reloadScableImage(endView: view)
+                    }),
+                ]
+                popManager.present(sourceView: self, on: nil, animated: true, completion: nil)
+                
             }
         }
     }
+    
+    
+    
 }
 
 extension scableImageView{

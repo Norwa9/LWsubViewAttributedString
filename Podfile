@@ -6,6 +6,7 @@ target 'subViewTextView_demo' do
   use_frameworks!
 pod 'SubviewAttachingTextView'
 pod 'BSText'
+pod 'NewPopMenu', '~> 2.0'
   # Pods for subViewTextView_demo
 
 end
