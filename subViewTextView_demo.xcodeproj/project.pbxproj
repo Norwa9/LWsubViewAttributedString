@@ -28,6 +28,7 @@
 		1BD31DC326D5F23B008ED4E1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DB526D5F23B008ED4E1 /* StringExtension.swift */; };
 		1BD31DC526D5F23B008ED4E1 /* dribbble64_imageio.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD31DB726D5F23B008ED4E1 /* dribbble64_imageio.png */; };
 		1BD31DC926D615A5008ED4E1 /* persistentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DC826D615A5008ED4E1 /* persistentHelper.swift */; };
+		1BD31DCC26D61A95008ED4E1 /* ScableImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DCB26D61A95008ED4E1 /* ScableImageViewModel.swift */; };
 		AEB8A52DDD5014BB613B0F51 /* Pods_subViewTextView_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDDC2C21D663287D61873928 /* Pods_subViewTextView_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		1BD31DB526D5F23B008ED4E1 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		1BD31DB726D5F23B008ED4E1 /* dribbble64_imageio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dribbble64_imageio.png; sourceTree = "<group>"; };
 		1BD31DC826D615A5008ED4E1 /* persistentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = persistentHelper.swift; sourceTree = "<group>"; };
+		1BD31DCB26D61A95008ED4E1 /* ScableImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScableImageViewModel.swift; sourceTree = "<group>"; };
 		88338D75514917E1007A1392 /* Pods-subViewTextView_demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subViewTextView_demo.release.xcconfig"; path = "Target Support Files/Pods-subViewTextView_demo/Pods-subViewTextView_demo.release.xcconfig"; sourceTree = "<group>"; };
 		CDDC2C21D663287D61873928 /* Pods_subViewTextView_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_subViewTextView_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0939DFB2D9CA1FA74B3F4CF /* Pods-subViewTextView_demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subViewTextView_demo.debug.xcconfig"; path = "Target Support Files/Pods-subViewTextView_demo/Pods-subViewTextView_demo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -93,7 +95,8 @@
 		1BD31D8C26D5EDCD008ED4E1 /* subViewTextView_demo */ = {
 			isa = PBXGroup;
 			children = (
-				1BD31DA326D5F113008ED4E1 /* LW */,
+				1BD31DCA26D61A80008ED4E1 /* ScableImageView */,
+				1BD31DA326D5F113008ED4E1 /* helper */,
 				1BD31D8D26D5EDCD008ED4E1 /* AppDelegate.swift */,
 				1BD31D8F26D5EDCD008ED4E1 /* SceneDelegate.swift */,
 				1BD31D9126D5EDCD008ED4E1 /* ViewController.swift */,
@@ -106,14 +109,13 @@
 			path = subViewTextView_demo;
 			sourceTree = "<group>";
 		};
-		1BD31DA326D5F113008ED4E1 /* LW */ = {
+		1BD31DA326D5F113008ED4E1 /* helper */ = {
 			isa = PBXGroup;
 			children = (
 				1BD31DC726D6158A008ED4E1 /* persistent */,
 				1BD31DAA26D5F23B008ED4E1 /* SupportFiles */,
-				1BD31DA426D5F121008ED4E1 /* ScableImageView.swift */,
 			);
-			path = LW;
+			path = helper;
 			sourceTree = "<group>";
 		};
 		1BD31DAA26D5F23B008ED4E1 /* SupportFiles */ = {
@@ -141,6 +143,15 @@
 				1BD31DC826D615A5008ED4E1 /* persistentHelper.swift */,
 			);
 			path = persistent;
+			sourceTree = "<group>";
+		};
+		1BD31DCA26D61A80008ED4E1 /* ScableImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1BD31DA426D5F121008ED4E1 /* ScableImageView.swift */,
+				1BD31DCB26D61A95008ED4E1 /* ScableImageViewModel.swift */,
+			);
+			path = ScableImageView;
 			sourceTree = "<group>";
 		};
 		EA715E18370F32884ADFB7AD /* Frameworks */ = {
@@ -289,6 +300,7 @@
 				1BD31DC926D615A5008ED4E1 /* persistentHelper.swift in Sources */,
 				1BD31DBE26D5F23B008ED4E1 /* BSGestureRecognizer.swift in Sources */,
 				1BD31D8E26D5EDCD008ED4E1 /* AppDelegate.swift in Sources */,
+				1BD31DCC26D61A95008ED4E1 /* ScableImageViewModel.swift in Sources */,
 				1BD31D9026D5EDCD008ED4E1 /* SceneDelegate.swift in Sources */,
 				1BD31DC326D5F23B008ED4E1 /* StringExtension.swift in Sources */,
 				1BD31DBB26D5F23B008ED4E1 /* CALayerExtension.swift in Sources */,
