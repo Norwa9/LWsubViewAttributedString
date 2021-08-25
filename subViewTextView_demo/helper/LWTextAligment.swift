@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum LWTextAligmentStyle:Int {
+enum LWTextAligmentStyle:Int,Codable {
     case center 
     case left
     case right

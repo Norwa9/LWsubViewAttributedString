@@ -23,6 +23,23 @@ class ScableImageViewModel: NSObject {
         super.init()
     }
     
+    init(model:ScableImageModel){
+        self.location = model.location
+        self.image = UIImage(data: model.imageData) ?? #imageLiteral(resourceName: "bg")
+        self.bounds = CGRect.init(string: model.bounds) ?? .zero
+        var paraStyle:NSMutableParagraphStyle
+        switch model.paraStyle{
+        case .center:
+            paraStyle = centerParagraphStyle
+        case .left:
+            paraStyle = leftParagraphStyle
+        case .right:
+            paraStyle = rightParagraphStyle
+        }
+        self.paraStyle = paraStyle
+        super.init()
+    }
+    
     typealias completionType = ()->(Void)
     ///view的location发生变化后，计算新的location
     func getNewestLocation(attributedString:NSAttributedString,completion:completionType){
@@ -44,5 +61,19 @@ class ScableImageViewModel: NSObject {
         }
     }
     
+    func getModel() -> ScableImageModel{
+        var paraStyle:LWTextAligmentStyle
+        if self.paraStyle == centerParagraphStyle{
+            paraStyle = .center
+        }else if self.paraStyle == leftParagraphStyle{
+            paraStyle = .left
+        }else{
+            paraStyle = .right
+        }
+        
+        let boundsSring = "\(bounds.origin.x),\(bounds.origin.y),\(bounds.size.width),\(bounds.size.height)"
+        let model = ScableImageModel(location: location, imageData: image.pngData()!, bounds: boundsSring, paraStyle: paraStyle)
+        return model
+    }
     
 }

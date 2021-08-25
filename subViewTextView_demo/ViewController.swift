@@ -52,6 +52,14 @@ class ViewController: UIViewController {
         text = text
             .insertingAttachment(SubviewTextAttachment(view: view2, size: view2.size), at: viewModel2.location, with: viewModel2.paraStyle)
         
+        let model3 = ScableImageModel(location: text.length, imageData: UIImage(named: "bg")!.pngData()!, bounds: "0,0,200,200", paraStyle: .center)
+        let viewModel3 = ScableImageViewModel(model: model3)
+        let view3 = scableImageView(viewModel: viewModel3)
+        view3.backgroundColor = .black
+        view3.delegate = self
+        text = text
+            .insertingAttachment(SubviewTextAttachment(view: view3, size: view3.size), at: viewModel3.location, with: viewModel3.paraStyle)
+        
 
         // Add attachments to the string and set it on the text view
         // This example avoids evaluating the attachments or attributed strings with attachments in the Playground because Xcode crashes trying to decode attachment objects
