@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SubviewAttachingTextView
 
-class ScableImageModel: NSObject,Codable {
+class ScalableImageModel: NSObject,Codable {
     var location:Int
     var imageData:Data
     var bounds:String

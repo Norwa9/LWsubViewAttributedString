@@ -14,7 +14,7 @@
 		1BD31D9726D5EDD0008ED4E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BD31D9626D5EDD0008ED4E1 /* Assets.xcassets */; };
 		1BD31D9A26D5EDD0008ED4E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BD31D9826D5EDD0008ED4E1 /* LaunchScreen.storyboard */; };
 		1BD31DA226D5EF73008ED4E1 /* AttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DA126D5EF73008ED4E1 /* AttributedString+.swift */; };
-		1BD31DA526D5F121008ED4E1 /* ScableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DA426D5F121008ED4E1 /* ScableImageView.swift */; };
+		1BD31DA526D5F121008ED4E1 /* ScalableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DA426D5F121008ED4E1 /* ScalableImageView.swift */; };
 		1BD31DB926D5F23B008ED4E1 /* UIControlExtend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DAB26D5F23B008ED4E1 /* UIControlExtend.swift */; };
 		1BD31DBA26D5F23B008ED4E1 /* UIGestureRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DAC26D5F23B008ED4E1 /* UIGestureRecognizerExtension.swift */; };
 		1BD31DBB26D5F23B008ED4E1 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DAD26D5F23B008ED4E1 /* CALayerExtension.swift */; };
@@ -28,9 +28,9 @@
 		1BD31DC326D5F23B008ED4E1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DB526D5F23B008ED4E1 /* StringExtension.swift */; };
 		1BD31DC526D5F23B008ED4E1 /* dribbble64_imageio.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD31DB726D5F23B008ED4E1 /* dribbble64_imageio.png */; };
 		1BD31DC926D615A5008ED4E1 /* persistentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DC826D615A5008ED4E1 /* persistentHelper.swift */; };
-		1BD31DCE26D61ADD008ED4E1 /* ScableImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DCD26D61ADD008ED4E1 /* ScableImageModel.swift */; };
+		1BD31DCE26D61ADD008ED4E1 /* ScalableImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DCD26D61ADD008ED4E1 /* ScalableImageModel.swift */; };
 		1BD31DD026D633C0008ED4E1 /* LWTextAligment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DCF26D633C0008ED4E1 /* LWTextAligment.swift */; };
-		1BD31DD226D6370C008ED4E1 /* ScableImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DD126D6370C008ED4E1 /* ScableImageViewModel.swift */; };
+		1BD31DD226D6370C008ED4E1 /* ScalableImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DD126D6370C008ED4E1 /* ScalableImageViewModel.swift */; };
 		1BD31DD526D63CA7008ED4E1 /* CGRect+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DD426D63CA7008ED4E1 /* CGRect+.swift */; };
 		1BD31DD726D64408008ED4E1 /* LWPopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DD626D64408008ED4E1 /* LWPopManager.swift */; };
 		AEB8A52DDD5014BB613B0F51 /* Pods_subViewTextView_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDDC2C21D663287D61873928 /* Pods_subViewTextView_demo.framework */; };
@@ -47,7 +47,7 @@
 		1BD31D9926D5EDD0008ED4E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1BD31D9B26D5EDD0008ED4E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BD31DA126D5EF73008ED4E1 /* AttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+.swift"; sourceTree = "<group>"; };
-		1BD31DA426D5F121008ED4E1 /* ScableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScableImageView.swift; sourceTree = "<group>"; };
+		1BD31DA426D5F121008ED4E1 /* ScalableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableImageView.swift; sourceTree = "<group>"; };
 		1BD31DAB26D5F23B008ED4E1 /* UIControlExtend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtend.swift; sourceTree = "<group>"; };
 		1BD31DAC26D5F23B008ED4E1 /* UIGestureRecognizerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGestureRecognizerExtension.swift; sourceTree = "<group>"; };
 		1BD31DAD26D5F23B008ED4E1 /* CALayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
@@ -61,9 +61,9 @@
 		1BD31DB526D5F23B008ED4E1 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		1BD31DB726D5F23B008ED4E1 /* dribbble64_imageio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dribbble64_imageio.png; sourceTree = "<group>"; };
 		1BD31DC826D615A5008ED4E1 /* persistentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = persistentHelper.swift; sourceTree = "<group>"; };
-		1BD31DCD26D61ADD008ED4E1 /* ScableImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScableImageModel.swift; sourceTree = "<group>"; };
+		1BD31DCD26D61ADD008ED4E1 /* ScalableImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableImageModel.swift; sourceTree = "<group>"; };
 		1BD31DCF26D633C0008ED4E1 /* LWTextAligment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWTextAligment.swift; sourceTree = "<group>"; };
-		1BD31DD126D6370C008ED4E1 /* ScableImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScableImageViewModel.swift; sourceTree = "<group>"; };
+		1BD31DD126D6370C008ED4E1 /* ScalableImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableImageViewModel.swift; sourceTree = "<group>"; };
 		1BD31DD426D63CA7008ED4E1 /* CGRect+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+.swift"; sourceTree = "<group>"; };
 		1BD31DD626D64408008ED4E1 /* LWPopManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LWPopManager.swift; sourceTree = "<group>"; };
 		88338D75514917E1007A1392 /* Pods-subViewTextView_demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subViewTextView_demo.release.xcconfig"; path = "Target Support Files/Pods-subViewTextView_demo/Pods-subViewTextView_demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,9 +161,9 @@
 		1BD31DCA26D61A80008ED4E1 /* ScableImageView */ = {
 			isa = PBXGroup;
 			children = (
-				1BD31DA426D5F121008ED4E1 /* ScableImageView.swift */,
-				1BD31DCD26D61ADD008ED4E1 /* ScableImageModel.swift */,
-				1BD31DD126D6370C008ED4E1 /* ScableImageViewModel.swift */,
+				1BD31DA426D5F121008ED4E1 /* ScalableImageView.swift */,
+				1BD31DCD26D61ADD008ED4E1 /* ScalableImageModel.swift */,
+				1BD31DD126D6370C008ED4E1 /* ScalableImageViewModel.swift */,
 			);
 			path = ScableImageView;
 			sourceTree = "<group>";
@@ -312,9 +312,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BD31DD226D6370C008ED4E1 /* ScableImageViewModel.swift in Sources */,
+				1BD31DD226D6370C008ED4E1 /* ScalableImageViewModel.swift in Sources */,
 				EA2235DB26D68C08001FAD1D /* SubviewTextAttachment+.swift in Sources */,
-				1BD31DCE26D61ADD008ED4E1 /* ScableImageModel.swift in Sources */,
+				1BD31DCE26D61ADD008ED4E1 /* ScalableImageModel.swift in Sources */,
 				1BD31DA226D5EF73008ED4E1 /* AttributedString+.swift in Sources */,
 				1BD31DD726D64408008ED4E1 /* LWPopManager.swift in Sources */,
 				1BD31DC126D5F23B008ED4E1 /* DataExtension.swift in Sources */,
@@ -322,7 +322,7 @@
 				1BD31DBC26D5F23B008ED4E1 /* BundleExtension.swift in Sources */,
 				1BD31DBA26D5F23B008ED4E1 /* UIGestureRecognizerExtension.swift in Sources */,
 				1BD31D9226D5EDCD008ED4E1 /* ViewController.swift in Sources */,
-				1BD31DA526D5F121008ED4E1 /* ScableImageView.swift in Sources */,
+				1BD31DA526D5F121008ED4E1 /* ScalableImageView.swift in Sources */,
 				1BD31DD026D633C0008ED4E1 /* LWTextAligment.swift in Sources */,
 				1BD31DBF26D5F23B008ED4E1 /* ViewExtension.swift in Sources */,
 				1BD31DD526D63CA7008ED4E1 /* CGRect+.swift in Sources */,

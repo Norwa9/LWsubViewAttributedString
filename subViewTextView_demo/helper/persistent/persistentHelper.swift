@@ -7,7 +7,7 @@
 
 import Foundation
 //MARK:-save
-func saveAttributes(models:[ScableImageModel]){
+func saveAttributes(models:[ScalableImageModel]){
     let defautls = UserDefaults.standard
     let jsonEncoder = JSONEncoder()
     if let modelsData = try? jsonEncoder.encode(models) {
@@ -38,13 +38,13 @@ func saveAttributedString(id_string:String,aString:NSAttributedString?) {
 }
 
 //MARK:-load
-func loadAttributes() -> [ScableImageModel]{
+func loadAttributes() -> [ScalableImageModel]{
     let defaults = UserDefaults.standard
     
     if let savedData = defaults.object(forKey: "ScableImageModel") as? Data {
         let jsonDecoder = JSONDecoder()
         do {
-           let models = try jsonDecoder.decode([ScableImageModel].self, from: savedData)
+           let models = try jsonDecoder.decode([ScalableImageModel].self, from: savedData)
             return models
         } catch {
 

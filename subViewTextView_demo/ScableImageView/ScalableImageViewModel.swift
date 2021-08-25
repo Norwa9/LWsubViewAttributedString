@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SubviewAttachingTextView
 
-class ScableImageViewModel: NSObject {
+class ScalableImageViewModel: NSObject {
     var location:Int
     var image:UIImage
     var bounds:CGRect
@@ -25,7 +25,7 @@ class ScableImageViewModel: NSObject {
         super.init()
     }
     
-    init(model:ScableImageModel){
+    init(model:ScalableImageModel){
         self.location = model.location
         self.image = UIImage(data: model.imageData) ?? #imageLiteral(resourceName: "bg")
         self.bounds = CGRect.init(string: model.bounds) ?? .zero
@@ -51,7 +51,7 @@ class ScableImageViewModel: NSObject {
         let fullRange = NSRange(location: 0, length: attributedString.length)
         attributedString.enumerateAttribute(.attachment, in: fullRange, options: []) { object, range, stop in
             if let attchment = object as? SubviewTextAttachment{
-                if let view = attchment.viewProvider.instantiateView(for: attchment, in: SubviewAttachingTextViewBehavior.init()) as? scableImageView{
+                if let view = attchment.viewProvider.instantiateView(for: attchment, in: SubviewAttachingTextViewBehavior.init()) as? ScalableImageView{
                     if view.viewModel == self{
                         let newestLocation = range.location
                         self.location = newestLocation
@@ -67,7 +67,7 @@ class ScableImageViewModel: NSObject {
     }
     
     ///viewModel转Model
-    func generateModel() -> ScableImageModel{
+    func generateModel() -> ScalableImageModel{
         var paraStyle:LWTextAligmentStyle
         if self.paraStyle == centerParagraphStyle{
             paraStyle = .center
@@ -78,7 +78,7 @@ class ScableImageViewModel: NSObject {
         }
         
         let boundsSring = "\(bounds.origin.x),\(bounds.origin.y),\(bounds.size.width),\(bounds.size.height)"
-        let model = ScableImageModel(location: location, imageData: image.pngData()!, bounds: boundsSring, paraStyle: paraStyle.rawValue,contentMode: contentMode.rawValue)
+        let model = ScalableImageModel(location: location, imageData: image.pngData()!, bounds: boundsSring, paraStyle: paraStyle.rawValue,contentMode: contentMode.rawValue)
         return model
     }
     

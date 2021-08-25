@@ -1,5 +1,5 @@
 //
-//  LWImageView.swift
+//  ScalableImageView.swift
 //  BSTextDemo
 //
 //  Created by 罗威 on 2021/8/24.
@@ -10,20 +10,20 @@ import Foundation
 import UIKit
 import PopMenu
 
-protocol scableImageViewDelegate : NSObject {
-    func reloadScableImage(endView:scableImageView)
+protocol scalableImageViewDelegate : NSObject {
+    func reloadScableImage(endView:ScalableImageView)
 }
 
-class scableImageView:UIView, UIGestureRecognizerDelegate{
+class ScalableImageView:UIView, UIGestureRecognizerDelegate{
     private var dotView:UIView!
     private var imageView:UIImageView!
     private var dot: UIView?
     var startFrame:CGRect!
-    weak var delegate:scableImageViewDelegate?
+    weak var delegate:scalableImageViewDelegate?
     
-    var viewModel:ScableImageViewModel
+    var viewModel:ScalableImageViewModel
     
-    init(viewModel:ScableImageViewModel) {
+    init(viewModel:ScalableImageViewModel) {
         self.viewModel = viewModel
         super.init(frame: viewModel.bounds)
         
@@ -123,10 +123,10 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
     
 }
 
-extension scableImageView{
+extension ScalableImageView{
     @objc func handle(_ sender: UIGestureRecognizer!) {
         print("tapped")
-        if let view = sender.view as? scableImageView{
+        if let view = sender.view as? ScalableImageView{
             if view == self{
                 
                 let popManager = PopMenuManager.default
@@ -171,7 +171,7 @@ extension scableImageView{
     
 }
 
-extension scableImageView{
+extension ScalableImageView{
     /// 子视图超出本视图的部分也能接收事件
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
     
