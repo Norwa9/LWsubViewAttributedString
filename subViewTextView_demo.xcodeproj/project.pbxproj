@@ -34,6 +34,7 @@
 		1BD31DD526D63CA7008ED4E1 /* CGRect+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DD426D63CA7008ED4E1 /* CGRect+.swift */; };
 		1BD31DD726D64408008ED4E1 /* LWPopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD31DD626D64408008ED4E1 /* LWPopManager.swift */; };
 		AEB8A52DDD5014BB613B0F51 /* Pods_subViewTextView_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDDC2C21D663287D61873928 /* Pods_subViewTextView_demo.framework */; };
+		EA2235DB26D68C08001FAD1D /* SubviewTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2235DA26D68C08001FAD1D /* SubviewTextAttachment+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		88338D75514917E1007A1392 /* Pods-subViewTextView_demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subViewTextView_demo.release.xcconfig"; path = "Target Support Files/Pods-subViewTextView_demo/Pods-subViewTextView_demo.release.xcconfig"; sourceTree = "<group>"; };
 		CDDC2C21D663287D61873928 /* Pods_subViewTextView_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_subViewTextView_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0939DFB2D9CA1FA74B3F4CF /* Pods-subViewTextView_demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-subViewTextView_demo.debug.xcconfig"; path = "Target Support Files/Pods-subViewTextView_demo/Pods-subViewTextView_demo.debug.xcconfig"; sourceTree = "<group>"; };
+		EA2235DA26D68C08001FAD1D /* SubviewTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubviewTextAttachment+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				1BD31DD426D63CA7008ED4E1 /* CGRect+.swift */,
+				EA2235DA26D68C08001FAD1D /* SubviewTextAttachment+.swift */,
 			);
 			path = LWExtension;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BD31DD226D6370C008ED4E1 /* ScableImageViewModel.swift in Sources */,
+				EA2235DB26D68C08001FAD1D /* SubviewTextAttachment+.swift in Sources */,
 				1BD31DCE26D61ADD008ED4E1 /* ScableImageModel.swift in Sources */,
 				1BD31DA226D5EF73008ED4E1 /* AttributedString+.swift in Sources */,
 				1BD31DD726D64408008ED4E1 /* LWPopManager.swift in Sources */,

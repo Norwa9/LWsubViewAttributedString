@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         
         let model3 = ScableImageModel(location: text.length, imageData: UIImage(named: "bg")!.pngData()!, bounds: "0,0,200,200", paraStyle: 0,contentMode: 2)
         let viewModel33 = ScableImageViewModel(model: model3)
-        let model33 = viewModel33.getModel()
+        let model33 = viewModel33.generateModel()
         let viewModel3 = ScableImageViewModel(model: model33)
         let view3 = scableImageView(viewModel: viewModel3)
         view3.backgroundColor = .clear
@@ -76,10 +76,10 @@ class ViewController: UIViewController {
         aString.enumerateAttribute(.attachment, in: range, options: []) { (object, range, stop) in
             if let attchment = object as? SubviewTextAttachment{
                 if let view = attchment.view as? scableImageView{
-                    let currentLocation = range.location
+                    let newestLocation = range.location
                     let viewModel = view.viewModel
-                    viewModel.location = currentLocation
-                    models.append(viewModel.getModel())
+                    viewModel.location = newestLocation
+                    models.append(viewModel.generateModel())
                 }
             }
         }
@@ -106,7 +106,6 @@ class ViewController: UIViewController {
 
 extension ViewController : scableImageViewDelegate{
     func reloadScableImage(endView:scableImageView){
-        
         let newViewModel = endView.viewModel
         newViewModel.bounds = endView.frame
         newViewModel.getNewestLocation(attributedString: textView.attributedText){
@@ -128,10 +127,4 @@ extension ViewController : UITextViewDelegate{
     
 }
 
-extension SubviewTextAttachment{
-    var view:UIView{
-        get{
-            return self.viewProvider.instantiateView(for: self, in: SubviewAttachingTextViewBehavior.init())
-        }
-    }
-}
+

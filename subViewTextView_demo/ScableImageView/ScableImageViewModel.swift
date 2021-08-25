@@ -53,9 +53,9 @@ class ScableImageViewModel: NSObject {
             if let attchment = object as? SubviewTextAttachment{
                 if let view = attchment.viewProvider.instantiateView(for: attchment, in: SubviewAttachingTextViewBehavior.init()) as? scableImageView{
                     if view.viewModel == self{
-                        let newLocation  = range.location
-                        self.location = newLocation
-                        print("new location : \(newLocation)")
+                        let newestLocation = range.location
+                        self.location = newestLocation
+                        print("newest location : \(newestLocation)")
                         completion()
                         stop.pointee = true
                         return
@@ -66,7 +66,8 @@ class ScableImageViewModel: NSObject {
         }
     }
     
-    func getModel() -> ScableImageModel{
+    ///viewModel转Model
+    func generateModel() -> ScableImageModel{
         var paraStyle:LWTextAligmentStyle
         if self.paraStyle == centerParagraphStyle{
             paraStyle = .center
