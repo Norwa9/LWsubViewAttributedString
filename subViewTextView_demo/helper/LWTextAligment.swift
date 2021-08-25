@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-enum LWTextAligmentStyle {
-    case center
+enum LWTextAligmentStyle:Int {
+    case center 
     case left
     case right
 }

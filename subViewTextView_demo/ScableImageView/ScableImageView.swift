@@ -18,11 +18,11 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
     private var imageView:UIImageView!
     weak var delegate:scableImageViewDelegate?
     
-    var model:ScableImageModel
+    var viewModel:ScableImageViewModel
     
-    init(model:ScableImageModel) {
-        self.model = model
-        super.init(frame: model.bounds)
+    init(viewModel:ScableImageViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: viewModel.bounds)
         
         initUI()
         
@@ -93,7 +93,7 @@ extension scableImageView{
         print("tapped")
         if let view = sender.view as? scableImageView{
             if view == self{
-                view.model.paraStyle = leftParagraphStyle
+                view.viewModel.paraStyle = leftParagraphStyle
                 delegate?.reloadScableImage(endView: view)
             }
         }
