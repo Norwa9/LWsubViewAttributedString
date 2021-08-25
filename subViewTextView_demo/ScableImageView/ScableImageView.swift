@@ -14,20 +14,19 @@ protocol scableImageViewDelegate : NSObject {
 }
 
 class scableImageView:UIView, UIGestureRecognizerDelegate{
-    var dotView:UIView!
-    var index:Int!
-    var imageView:UIImageView!
+    private var dotView:UIView!
+    private var imageView:UIImageView!
     weak var delegate:scableImageViewDelegate?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    var model:ScableImageModel
+    
+    init(model:ScableImageModel) {
+        self.model = model
+        super.init(frame: model.bounds)
+        
         initUI()
         
-        imageView = UIImageView(image: UIImage(named: "bg"))
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        self.addSubview(imageView)
-        imageView.frame = self.bounds
+        
     }
     
     required init?(coder: NSCoder) {
@@ -35,6 +34,14 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
     }
     
     func initUI(){
+        //1.imageView
+        imageView = UIImageView(image: UIImage(named: "bg"))
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        self.addSubview(imageView)
+        imageView.frame = self.bounds
+        
+        //2.red dot
         weak var wlabel = self
         let dot: UIView? = newDotView()
         dot?.center = CGPoint(x: self.width, y: self.height)
@@ -56,11 +63,10 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
             
         }
         gesture.delegate = self
-        
         dot?.addGestureRecognizer(gesture)
     }
     
-    func newDotView() -> UIView? {
+    private func newDotView() -> UIView? {
         let view = UIView()
         view.size = CGSize(width: 50, height: 50)
         
@@ -75,19 +81,10 @@ class scableImageView:UIView, UIGestureRecognizerDelegate{
         return view
     }
     
-    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true//如果作判断的话，本view会拦截textView的上下滑动手势
-        super.gestureRecognizerShouldBegin(gestureRecognizer)
-        let p: CGPoint = gestureRecognizer.location(in: self)
-        if p.x < self.width - 20 {
-            return false
-        }
-        if p.y < self.height - 20 {
-            return false
-        }
-        return true
-    }
     
+}
+
+extension scableImageView{
     /// 子视图超出本视图的部分也能接收事件
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
     

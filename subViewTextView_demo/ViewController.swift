@@ -24,9 +24,9 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let aString = loadAttributedString(id_string: "1"){
-            textView.attributedText = aString
-        }
+//        if let aString = loadAttributedString(id_string: "1"){
+//            textView.attributedText = aString
+//        }
     }
     
     func initUI(){
@@ -56,16 +56,17 @@ class ViewController: UIViewController {
         //==============
         
         let text = NSAttributedString(string: "测试\n\n\n\n\n\n\n\n")
-        let view1 = scableImageView(frame: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
+        
+        let view1Model = ScableImageModel(location: text.length, image: #imageLiteral(resourceName: "bg"), bounds: CGRect(origin: .zero, size: CGSize(width: 200, height: 200)))
+        let view1 = scableImageView(model: view1Model)
         view1.backgroundColor = .black
         view1.delegate = self
-        view1.index = text.length
         view1.addGestureRecognizer(gestureRecognizer)
 
         // Add attachments to the string and set it on the text view
         // This example avoids evaluating the attachments or attributed strings with attachments in the Playground because Xcode crashes trying to decode attachment objects
         textView.attributedText = text
-            .insertingAttachment(SubviewTextAttachment(view: view1, size: view1.size), at: text.length, with: centerParagraphStyle)
+            .insertingAttachment(SubviewTextAttachment(view: view1, size: view1.size), at: view1.model.location, with: centerParagraphStyle)
 //            .insertingAttachment(SubviewTextAttachment(view: spinner), at: 200)
 //            .insertingAttachment(SubviewTextAttachment(view: UISwitch()), at: 300)
 //            .insertingAttachment(SubviewTextAttachment(view: UIDatePicker()), at: 500, with: centerParagraphStyle)
@@ -80,17 +81,17 @@ class ViewController: UIViewController {
 extension ViewController : scableImageViewDelegate{
     func reloadScableImage(view:scableImageView){
         let endFrame = view.frame
-        let convertedFrame = textView.convert(endFrame, from: view)
-        print("convertedFrame:\(convertedFrame)")
         
-        let newView = scableImageView(frame: endFrame)
-        newView.index = view.index
+        let newModel = view.model
+        newModel.bounds = endFrame
+        
+        let newView = scableImageView(model: newModel)
         newView.delegate = self
         newView.backgroundColor = .green
         let newAttchment = SubviewTextAttachment(view: newView, size: newView.size)
         
         let mutable = NSMutableAttributedString(attributedString: textView.attributedText!)
-        mutable.replaceAttchment(newAttchment, at: newView.index, with: centerParagraphStyle)
+        mutable.replaceAttchment(newAttchment, at: newView.model.location, with: centerParagraphStyle)
         textView.attributedText = mutable
         
         
