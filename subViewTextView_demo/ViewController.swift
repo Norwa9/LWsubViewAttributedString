@@ -19,15 +19,13 @@ class ViewController: UIViewController {
         self.view.addSubview(textView)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(save))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(load))
         
         initUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let models = loadAttributes()
-        if let aString = loadAttributedString(id_string: "2"){
-            textView.attributedText = recoverAttributedString(models: models, aString: aString)
-        }
+        
     }
     
     func initUI(){
@@ -53,7 +51,7 @@ class ViewController: UIViewController {
         text = text
             .insertingAttachment(SubviewTextAttachment(view: view2, size: view2.size), at: viewModel2.location, with: viewModel2.paraStyle)
         
-        let model3 = ScalableImageModel(location: text.length, imageData: UIImage(named: "bg")!.pngData()!, bounds: "0,0,200,200", paraStyle: 0,contentMode: 2)
+        let model3 = ScalableImageModel(location: text.length, image: UIImage(named: "bg")!, bounds: "0,0,200,200", paraStyle: 0,contentMode: 2)
         let viewModel33 = ScalableImageViewModel(model: model3)
         let model33 = viewModel33.generateModel()
         let viewModel3 = ScalableImageViewModel(model: model33)
@@ -87,6 +85,13 @@ class ViewController: UIViewController {
         saveAttributes(models: models)
         saveAttributedString(id_string: "2", aString: aString)
         print("save aString length : \(aString.length)")
+    }
+    
+    @objc func load(){
+        let models = loadAttributes()
+        if let aString = loadAttributedString(id_string: "2"){
+            textView.attributedText = recoverAttributedString(models: models, aString: aString)
+        }
     }
     
     //MARK:-recover

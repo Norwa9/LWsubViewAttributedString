@@ -7,6 +7,9 @@ target 'subViewTextView_demo' do
 pod 'SubviewAttachingTextView'
 pod 'BSText'
 pod 'NewPopMenu', '~> 2.0'
+pod 'YYModel'
+pod 'SwiftyJSON', '~> 4.0'
+pod 'YYImage'
   # Pods for subViewTextView_demo
 
 end

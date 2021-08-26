@@ -8,22 +8,40 @@
 import Foundation
 import UIKit
 import SubviewAttachingTextView
+import YYModel
+import YYImage
 
-class ScalableImageModel: NSObject,Codable {
-    var location:Int
-    var imageData:Data
-    var bounds:String
-    var paraStyle:Int
-    var contentMode:Int
+class ScalableImageModel: NSObject,Codable,YYModel {
+    @objc dynamic var location:Int = -1
+    @objc dynamic var imageData:Data? = nil
+    @objc dynamic var bounds:String = ""
+    @objc dynamic var paraStyle:Int = -1
+    @objc dynamic var contentMode:Int = -1
     
-    init(location:Int,imageData:Data,bounds:String,paraStyle:Int,contentMode:Int) {
+    override init() {
+        super.init()
+    }
+    
+    init(location:Int,image:UIImage,bounds:String,paraStyle:Int,contentMode:Int) {
         self.location = location
-//        self.imageData = imageData
-        self.imageData = "123".data(using: .utf16)!
+//        let jpegEncoder = YYImageEncoder(type: .JPEG)
+//        jpegEncoder?.quality = 0.9
+//        jpegEncoder?.add(image, duration: 0)
+//        let jpegData = jpegEncoder?.encode()
+//        self.imageData = jpegData
+        
+        //self.imageData = "123".data(using: .utf16)!
+        
+        self.imageData = image.yy_imageDataRepresentation()
+        
         self.bounds = bounds
         self.paraStyle = paraStyle
         self.contentMode = contentMode
         super.init()
+    }
+    
+    override class func yy_modelEncode(with aCoder: NSCoder) {
+        self.yy_modelEncode(with: aCoder)
     }
     
     

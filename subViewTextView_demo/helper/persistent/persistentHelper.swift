@@ -6,14 +6,22 @@
 //
 
 import Foundation
+import YYModel
 //MARK:-save
 func saveAttributes(models:[ScalableImageModel]){
-    let defautls = UserDefaults.standard
     let jsonEncoder = JSONEncoder()
     if let modelsData = try? jsonEncoder.encode(models) {
-        defautls.set(modelsData, forKey: "ScableImageModel")
+        let fileName = "test.json"
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+           let fileURL = dir.appendingPathComponent(fileName)
+            do {
+                try modelsData.write(to: fileURL, options: .atomic)
+            } catch {
+                print(print("FileManager Failed to write models"))
+            }
+        }
     } else {
-        print("Failed to save roamData")
+        print("Failed to Encode models")
     }
 }
 
@@ -39,19 +47,23 @@ func saveAttributedString(id_string:String,aString:NSAttributedString?) {
 
 //MARK:-load
 func loadAttributes() -> [ScalableImageModel]{
-    let defaults = UserDefaults.standard
-    
-    if let savedData = defaults.object(forKey: "ScableImageModel") as? Data {
-        let jsonDecoder = JSONDecoder()
+    let fileName = "test.json"
+    if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+       let fileURL = dir.appendingPathComponent(fileName)
         do {
-           let models = try jsonDecoder.decode([ScalableImageModel].self, from: savedData)
-            return models
+            let data = try Data(contentsOf: fileURL)
+            if let models = NSArray.yy_modelArray(with: ScalableImageModel.self, json: data) as? [ScalableImageModel]{
+                print("fileManager load models.count:\(models.count)")
+                return models
+            }
         } catch {
-
+            print("error:\(error)")
+            return []
         }
     }
     return []
 }
+
 func loadAttributedString(id_string:String) -> NSAttributedString?{
    if let dir = FileManager.default.urls (for: .documentDirectory, in: .userDomainMask) .first {
        let path_file_name = dir.appendingPathComponent (id_string)

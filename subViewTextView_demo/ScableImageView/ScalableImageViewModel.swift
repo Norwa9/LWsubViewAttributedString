@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SubviewAttachingTextView
+import YYImage
 
 class ScalableImageViewModel: NSObject {
     var location:Int
@@ -27,7 +28,13 @@ class ScalableImageViewModel: NSObject {
     
     init(model:ScalableImageModel){
         self.location = model.location
-        self.image = UIImage(data: model.imageData) ?? #imageLiteral(resourceName: "bg")
+        print(model.imageData!)
+        if let image = UIImage(data: model.imageData!){
+            self.image = image
+        }else{
+            print("读取 imageData 失败")
+            self.image = #imageLiteral(resourceName: "bg")
+        }
         self.bounds = CGRect.init(string: model.bounds) ?? .zero
         var paraStyle:NSMutableParagraphStyle
         switch model.paraStyle{
@@ -78,7 +85,7 @@ class ScalableImageViewModel: NSObject {
         }
         
         let boundsSring = "\(bounds.origin.x),\(bounds.origin.y),\(bounds.size.width),\(bounds.size.height)"
-        let model = ScalableImageModel(location: location, imageData: image.pngData()!, bounds: boundsSring, paraStyle: paraStyle.rawValue,contentMode: contentMode.rawValue)
+        let model = ScalableImageModel(location: location, image: image, bounds: boundsSring, paraStyle: paraStyle.rawValue,contentMode: contentMode.rawValue)
         return model
     }
     
