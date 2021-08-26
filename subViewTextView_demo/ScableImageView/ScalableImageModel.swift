@@ -30,9 +30,9 @@ class ScalableImageModel: NSObject,Codable,YYModel {
 //        let jpegData = jpegEncoder?.encode()
 //        self.imageData = jpegData
         
-        //self.imageData = "123".data(using: .utf16)!
+        self.imageData = "123".data(using: .utf16)!
         
-        self.imageData = image.yy_imageDataRepresentation()
+//        self.imageData = image.jpegData(compressionQuality: 0.8)
         
         self.bounds = bounds
         self.paraStyle = paraStyle

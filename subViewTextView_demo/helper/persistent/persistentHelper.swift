@@ -52,7 +52,9 @@ func loadAttributes() -> [ScalableImageModel]{
        let fileURL = dir.appendingPathComponent(fileName)
         do {
             let data = try Data(contentsOf: fileURL)
-            if let models = NSArray.yy_modelArray(with: ScalableImageModel.self, json: data) as? [ScalableImageModel]{
+            let convertedString = String(data: data, encoding: String.Encoding.utf8)!
+            if let models = NSArray.yy_modelArray(with: ScalableImageModel.self, json: convertedString) as? [ScalableImageModel]{
+//            if let models = NSArray.yy_modelArray(with: ScalableImageModel.self, json: data) as? [ScalableImageModel]{
                 print("fileManager load models.count:\(models.count)")
                 return models
             }
